@@ -8,13 +8,36 @@
         Crafty.init(655,393, document.getElementById('game'));
         Crafty.background('#FFFFFF url({{ STATIC_URL }}img/background.jpg) no-repeat center center');
         Crafty.sprite('{{ STATIC_URL  }}img/hero.png', {hero: [0, 0, 512, 512]});
+        var score = 0;
+        var old_r = -1;
+        var r = -1;
+        var score_area = Crafty.e('2D, DOM, Text').attr({x: 280, y: 360, w: 200}).text(function() { return 'You fight '+score; }).textColor('#ff0000').textFont({'size': '20px'});
         var positions = [{x: 70, y: 56}, {x: 260, y: 53}, {x: 459, y: 54}, 
         {x: 43, y:142}, {x: 262,y: 142}, {x: 462, y:142},
         {x: 39, y:242}, {x: 262,y: 242}, {x: 479, y:242}];
         var h = [];
         for (var i=0; i<9; i++) {
-            h[i] = Crafty.e('DOM, hero').attr({x: positions[i].x, y: positions[i].y, w: 100, h: 100});
+            h[i] = Crafty.e('DOM, hero, Mouse').attr({x: positions[i].x, y: positions[i].y, w: 100, h: 100, alpha: 0.0});
+            h[i].bind('Click', function() {
+                if (this.alpha == 1.0) {
+                    this.attr({alpha: 0.0});
+                    score += 10;
+                    score_area.text(function() { return 'You fight '+score; });
+                    console.log('You fight '+score);
+                }
+            });
         }
+        setInterval(function() {
+            r = Math.floor(Math.random()*10);
+            if (r != 9) {
+                if (old_r != -1) {
+                    h[old_r].attr({ alpha: 0.0 });
+                }
+                h[r].attr({ alpha: 1.0 });
+                old_r = r;
+            }
+            
+        }, 1000);
         /*
         Crafty.e('Floor, 2D, Canvas, Color')
         .attr({x: 0, y: 393, w: 250, h: 10})

@@ -8,3 +8,10 @@ fight-heros
 1. nodejs
 1. bower
 2. crafty.js 
+
+安装
+=======
+
+Gentoo
+-------
+sh gentoo_install.sh
