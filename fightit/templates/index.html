@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head><title>Fight Heros</title></head>
+    <body>
+        <div id="game"></div>
+        <script type="text/javascript" src="{{ STATIC_URL }}crafty/dist/crafty-min.js"></script>
+    <script>
+        Crafty.init(655,393, document.getElementById('game'));
+        Crafty.background('#FFFFFF url({{ STATIC_URL }}img/background.jpg) no-repeat center center');
+        Crafty.sprite('{{ STATIC_URL  }}img/hero.png', {hero: [0, 0, 512, 512]});
+        var positions = [{x: 70, y: 56}, {x: 260, y: 53}, {x: 459, y: 54}, 
+        {x: 43, y:142}, {x: 262,y: 142}, {x: 462, y:142},
+        {x: 39, y:242}, {x: 262,y: 242}, {x: 479, y:242}];
+        var h = [];
+        for (var i=0; i<9; i++) {
+            h[i] = Crafty.e('DOM, hero').attr({x: positions[i].x, y: positions[i].y, w: 100, h: 100});
+        }
+        /*
+        Crafty.e('Floor, 2D, Canvas, Color')
+        .attr({x: 0, y: 393, w: 250, h: 10})
+        .color('green');
+        Crafty.e('2D, DOM, Color, Fourway, Gravity')
+        .attr({x: 0, y: 0, w: 100, h: 100})
+        .color('#F00')
+        .fourway(4)
+        .gravity('Floor');
+        */
+    </script>
+    </body>
+
