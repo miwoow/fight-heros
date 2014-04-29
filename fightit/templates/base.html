@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Fight Heros</title>
+        <link rel="stylesheet" href="{{ STATIC_URL }}boostrap3/css/bootstrap.min.css">
+        <link rel="stylesheet" href="{{ STATIC_URL }}css/ks-style.css">
+    </head>
+    <body>
+        <div class="content" style="padding:20px;">
+            <div class="row">
+                <div class="col-md-2">
+                    <table class="table table-striped">
+                        <tbody>
+                            <tr><td><a href="{% url 'ui-table' %}">table</a></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-md-10" style="padding-left: 0;">
+                    {% block body %}
+                    {% endblock %}
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

@@ -7,3 +7,10 @@ from django.shortcuts import render_to_response
 
 def home(request):
     return render_to_response('ui/index.html', {}, context_instance=RequestContext(request))
+
+def ui(request):
+    return render_to_response('ui/ui.html', {}, context_instance=RequestContext(request))
+
+def table(request):
+    return render_to_response('ui/table.html', {}, context_instance=RequestContext(request))
+

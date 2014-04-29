@@ -8,7 +8,8 @@ urlpatterns = patterns('',
     # url(r'^$', 'fightit.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
     url(r'^$', 'fightit.views.home', name='home'),
-    url(r'^ui/$', 'ui.views.home', name='ui-home'),
+    url(r'^ui/$', 'ui.views.ui', name='ui-ui'),
+    url(r'^ui/table/$', 'ui.views.table', name='ui-table'),
 
     url(r'^admin/', include(admin.site.urls)),
 )
